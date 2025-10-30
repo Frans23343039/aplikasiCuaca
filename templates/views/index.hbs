@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+{{>head}}
+<body>
+    {{>header}}
+
+    <main class="content fade-in">
+        <section class="card weather-card">
+            <div class="weather-left">
+                <h1 class="title">{{judul}}</h1>
+                <p class="subtitle">Masukkan nama kota untuk mengetahui kondisi cuaca saat ini.</p>
+
+                <form id="weather-form" class="form">
+                    <input type="text" placeholder="Contoh: Padang" required>
+                    <button type="submit">Cari Cuaca</button>
+                </form>
+
+                <div class="result">
+                    <p id="pesan-1"></p>
+                    <p id="pesan-2"></p>
+                </div>
+            </div>
+
+            <div class="weather-right">
+                <img src="/img/cuaca.png" alt="Cuaca" class="weather-img">
+            </div>
+        </section>
+    </main>
+
+    {{>footer}}
+    <script src="/js/app.js"></script>
+</body>
+</html>

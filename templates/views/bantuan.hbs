@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+{{>head}}
+<body>
+    {{>header}}
+
+    <main class="content fade-in">
+        <section class="card faq-card">
+            <h1 class="title">Bantuan & FAQ</h1>
+            <p class="subtitle">
+                Temukan jawaban dari pertanyaan yang sering diajukan mengenai <strong>Aplikasi Cek Cuaca</strong>.
+            </p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">🌦️ Apa fungsi utama aplikasi ini?</button>
+                    <div class="faq-answer">
+                        <p>Aplikasi ini berfungsi untuk menampilkan informasi cuaca terkini berdasarkan lokasi yang kamu masukkan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">📍 Bagaimana cara mencari cuaca di suatu kota?</button>
+                    <div class="faq-answer">
+                        <p>Kamu cukup memasukkan nama kota di halaman utama, lalu klik tombol <strong>"Cari Cuaca"</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">⚙️ Dari mana data cuaca diambil?</button>
+                    <div class="faq-answer">
+                        <p>Data cuaca diperoleh dari <strong>API Weatherstack</strong> yang menyediakan informasi real-time dari berbagai wilayah.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">💡 Mengapa hasil cuaca tidak muncul?</button>
+                    <div class="faq-answer">
+                        <p>Pastikan kamu terhubung ke internet dan menulis nama kota dengan benar. Misalnya: <em>Padang</em>, bukan <em>pdg</em>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{>footer}}
+
+    <script>
+        // Script FAQ Toggle
+        document.querySelectorAll(".faq-question").forEach(button => {
+            button.addEventListener("click", () => {
+                const faq = button.parentElement;
+                faq.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>
