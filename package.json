@@ -2,9 +2,9 @@
   "name": "web-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,6 @@
   "dependencies": {
     "express": "^5.1.0",
     "hbs": "^4.2.0",
-    "hsb": "^1.0.2",
     "postman-request": "^2.88.1-postman.46"
   }
 }

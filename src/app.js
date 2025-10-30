@@ -8,7 +8,7 @@ const prediksiCuaca = require('./utils/prediksiCuaca')
 
 // Inisialisasi aplikasi express
 const app = express()
-
+const port = process.env.PORT || 4000
 // Tentukan direktori public, views, dan partials
 const direktoriPublic = path.join(__dirname, '../public')
 const direktoriViews = path.join(__dirname, '../templates/views')
