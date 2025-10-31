@@ -2,57 +2,88 @@
 <html lang="id">
 {{>head}}
 <body>
-    {{>header}}
+  {{>header}}
 
-    <main class="content fade-in">
-        <section class="card faq-card">
-            <h1 class="title">Bantuan & FAQ</h1>
-            <p class="subtitle">
-                Temukan jawaban dari pertanyaan yang sering diajukan mengenai <strong>Aplikasi Cek Cuaca</strong>.
-            </p>
+  <main class="content fade-in">
+    <section class="card faq-card">
+      <h1 class="title">Bantuan & FAQ</h1>
+      <p class="subtitle">
+        Temukan jawaban dari pertanyaan yang sering diajukan mengenai <strong>Aplikasi Cek Cuaca & Berita</strong>.
+      </p>
 
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">🌦️ Apa fungsi utama aplikasi ini?</button>
-                    <div class="faq-answer">
-                        <p>Aplikasi ini berfungsi untuk menampilkan informasi cuaca terkini berdasarkan lokasi yang kamu masukkan.</p>
-                    </div>
-                </div>
+      <div class="faq-list">
 
-                <div class="faq-item">
-                    <button class="faq-question">📍 Bagaimana cara mencari cuaca di suatu kota?</button>
-                    <div class="faq-answer">
-                        <p>Kamu cukup memasukkan nama kota di halaman utama, lalu klik tombol <strong>"Cari Cuaca"</strong>.</p>
-                    </div>
-                </div>
+        <!-- a -->
+        <div class="faq-item">
+          <button class="faq-question">🌦️ a. Halaman ini digunakan untuk apa?</button>
+          <div class="faq-answer">
+            <p>Halaman ini berfungsi sebagai pusat bantuan (<strong>FAQ</strong>) yang menjelaskan informasi umum tentang aplikasi <strong>Cek Cuaca & Berita</strong>. Pengguna dapat memahami fungsi, teknologi, serta cara kerja aplikasi dalam menampilkan data cuaca dan berita terkini.</p>
+          </div>
+        </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">⚙️ Dari mana data cuaca diambil?</button>
-                    <div class="faq-answer">
-                        <p>Data cuaca diperoleh dari <strong>API Weatherstack</strong> yang menyediakan informasi real-time dari berbagai wilayah.</p>
-                    </div>
-                </div>
+        <!-- b -->
+        <div class="faq-item">
+          <button class="faq-question">🔗 b. Apa itu API?</button>
+          <div class="faq-answer">
+            <p><strong>API (Application Programming Interface)</strong> adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data. Dengan API, aplikasi kita bisa mengambil data dari sumber lain (seperti cuaca dan berita) tanpa harus menyimpannya sendiri.</p>
+          </div>
+        </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">💡 Mengapa hasil cuaca tidak muncul?</button>
-                    <div class="faq-answer">
-                        <p>Pastikan kamu terhubung ke internet dan menulis nama kota dengan benar. Misalnya: <em>Padang</em>, bukan <em>pdg</em>.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        <!-- c -->
+        <div class="faq-item">
+          <button class="faq-question">🌍 c. API apa yang digunakan dalam aplikasi ini?</button>
+          <div class="faq-answer">
+            <ul>
+              <li><strong>Weatherstack API</strong> — digunakan untuk mengambil data cuaca secara real-time berdasarkan lokasi pengguna.</li>
+              <li><strong>Mediastack API</strong> — digunakan untuk menampilkan berita terkini dari berbagai sumber di seluruh dunia.</li>
+              <li><strong>Geocode Function</strong> — merupakan fungsi internal yang membantu mengubah nama kota menjadi koordinat geografis (latitude dan longitude) sebelum datanya dikirim ke Weatherstack API.</li>
+            </ul>
+            <p>Kombinasi dari ketiga komponen tersebut memungkinkan aplikasi menampilkan informasi cuaca dan berita secara akurat.</p>
+          </div>
+        </div>
 
-    {{>footer}}
+        <!-- d -->
+        <div class="faq-item">
+          <button class="faq-question">⚙️ d. Pola arsitektur API yang digunakan (RESTful)</button>
+          <div class="faq-answer">
+            <p><strong>RESTful API</strong> adalah pola arsitektur yang menggunakan protokol <strong>HTTP</strong> dan format data <strong>JSON</strong> untuk mengakses sumber daya (data) dari server. RESTful API menggunakan metode seperti <code>GET</code> untuk mengambil data dan <code>POST</code> untuk mengirim data.</p>
+            <p>Contoh penerapan RESTful API dalam aplikasi ini:</p>
+            <ul>
+              <li><code>GET /infoCuaca?address=Padang</code> → Mengambil data cuaca dari Weatherstack API.</li>
+              <li><code>GET /berita</code> → Mengambil daftar berita terkini dari Mediastack API.</li>
+            </ul>
+            <p>Berikut ilustrasi sederhana cara kerja RESTful API:</p>
+            <img src="/img/restful-diagram.jpg" alt="Diagram RESTful API" class="faq-img">
+          </div>
+        </div>
 
-    <script>
-        // Script FAQ Toggle
-        document.querySelectorAll(".faq-question").forEach(button => {
-            button.addEventListener("click", () => {
-                const faq = button.parentElement;
-                faq.classList.toggle("active");
-            });
-        });
-    </script>
+        <!-- e -->
+        <div class="faq-item">
+          <button class="faq-question">💡 e. Apa keunggulan RESTful API?</button>
+          <div class="faq-answer">
+            <ul>
+              <li>Menggunakan format <strong>JSON</strong> yang ringan dan mudah dibaca.</li>
+              <li>Dapat digunakan oleh berbagai platform (web, mobile, IoT).</li>
+              <li>Memanfaatkan metode HTTP standar seperti <code>GET</code>, <code>POST</code>, <code>PUT</code>, dan <code>DELETE</code>.</li>
+              <li>Mudah dikembangkan, terukur, dan cepat diintegrasikan dengan API pihak ketiga seperti Weatherstack dan Mediastack.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  {{>footer}}
+
+  <script>
+    // Script interaktif untuk membuka/tutup jawaban FAQ
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const faq = button.parentElement;
+        faq.classList.toggle("active");
+      });
+    });
+  </script>
 </body>
 </html>

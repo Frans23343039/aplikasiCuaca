@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Base setup */
+/* ================================================================
+   🌐 BAGIAN DASAR (Digunakan di Semua Halaman)
+   - Mengatur warna utama, font, layout dasar, header, footer
+=================================================================== */
 :root {
     --primary: #2563eb;
     --background: #f8fafc;
@@ -24,7 +27,7 @@ body {
     flex-direction: column;
 }
 
-/* Header */
+/* ---------- HEADER ---------- */
 header {
     background: var(--card);
     box-shadow: 0 2px 6px var(--shadow);
@@ -47,7 +50,7 @@ header a:hover {
     color: var(--primary);
 }
 
-/* Footer */
+/* ---------- FOOTER ---------- */
 footer {
     text-align: center;
     padding: 20px;
@@ -58,7 +61,7 @@ footer {
     border-top: 1px solid #e2e8f0;
 }
 
-/* Content wrapper */
+/* ---------- KONTEN & CARD ---------- */
 .content {
     display: flex;
     justify-content: center;
@@ -67,13 +70,12 @@ footer {
     padding: 20px;
 }
 
-/* Card */
 .card {
     background: var(--card);
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 10px 25px var(--shadow);
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     text-align: center;
 }
@@ -91,6 +93,26 @@ footer {
     margin-bottom: 25px;
 }
 
+/* ---------- ANIMASI ---------- */
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================================================
+   🏠 HALAMAN UTAMA (index.hbs)
+   - Form input, tombol cari cuaca, hasil prediksi
+=================================================================== */
 .form input {
     width: 70%;
     padding: 10px 12px;
@@ -127,7 +149,53 @@ footer {
     font-size: 15px;
 }
 
-/* About Page */
+/* Tampilan ilustrasi cuaca */
+.weather-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 700px;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.weather-img {
+    width: 220px;
+    max-width: 90%;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.weather-img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsif layar besar */
+@media (min-width: 768px) {
+    .weather-card {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 50px;
+    }
+
+    .weather-left {
+        flex: 1;
+    }
+
+    .weather-right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* ================================================================
+   👤 HALAMAN TENTANG (tentang.hbs)
+   - Profil pengembang & kontak
+=================================================================== */
 .about {
     max-width: 600px;
 }
@@ -159,19 +227,134 @@ footer {
     text-decoration: underline;
 }
 
-/* Help Page */
-.help-list {
-    list-style: none;
+/* ================================================================
+   💬 HALAMAN BANTUAN / FAQ (bantuan.hbs)
+   - Pertanyaan interaktif + jawaban
+=================================================================== */
+.faq-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
     text-align: left;
-    margin-top: 15px;
-    color: #475569;
 }
 
-.help-list li {
-    margin-bottom: 8px;
+.faq-list {
+    margin-top: 1.5rem;
 }
 
-/* 404 Page */
+.faq-item {
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1rem;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a73e8;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover {
+    color: #0b57d0;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 0.6rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-answer ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+}
+
+.faq-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 0.8rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* ================================================================
+   📰 HALAMAN BERITA (berita.hbs)
+   - Menampilkan daftar berita dari API Mediastack
+=================================================================== */
+.berita-card {
+  max-width: 800px;
+  text-align: left;
+}
+
+.berita-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.berita-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.berita-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.berita-judul {
+  color: #2b6cb0;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.berita-info {
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 10px;
+}
+
+.berita-deskripsi {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.berita-link {
+  display: inline-block;
+  color: #2b6cb0;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.berita-link:hover {
+  color: #1a365d;
+}
+
+/* ================================================================
+   ⚠️ HALAMAN 404 (404.hbs)
+   - Tampilan error halaman tidak ditemukan
+=================================================================== */
 .error-code {
     font-size: 72px;
     color: var(--primary);
@@ -192,123 +375,3 @@ footer {
 .btn:hover {
     background: #1d4ed8;
 }
-
-/* Animation */
-.fade-in {
-    animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ============================
-   Tampilan Khusus Halaman Cuaca
-   ============================ */
-
-.weather-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    max-width: 700px;
-    padding: 40px 30px;
-    text-align: center;
-}
-
-.weather-img {
-    width: 220px;
-    max-width: 90%;
-    margin-top: 10px;
-    transition: transform 0.3s ease;
-}
-
-.weather-img:hover {
-    transform: scale(1.05);
-}
-
-/* Responsif untuk layar besar */
-@media (min-width: 768px) {
-    .weather-card {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-        padding: 50px;
-    }
-
-    .weather-left {
-        flex: 1;
-    }
-
-    .weather-right {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-/* ============================
-   Halaman Bantuan (FAQ)
-   ============================ */
-
-.faq-card {
-    max-width: 700px;
-    text-align: left;
-}
-
-.faq-list {
-    margin-top: 25px;
-}
-
-.faq-item {
-    border-bottom: 1px solid #e2e8f0;
-    padding: 15px 0;
-}
-
-.faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    text-align: left;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.faq-question:hover {
-    color: var(--primary);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 200px;
-    margin-top: 10px;
-}
-
-.faq-item.active .faq-question {
-    color: var(--primary);
-}
-
-.faq-card {
-    background: #f9fafb;
-}
-

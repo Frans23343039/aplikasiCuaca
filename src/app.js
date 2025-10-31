@@ -81,6 +81,42 @@ app.get(/^\/bantuan\/.*/, (req, res) => {
     })
 })
 
+const axios = require('axios')
+// Halaman Berita
+app.get('/berita', async (req, res) => {
+  try {
+    const response = await axios.get('http://api.mediastack.com/v1/news', {
+      params: {
+        access_key: '46b722bafe23f5aa8692634c7f19699f',
+        limit: 5,
+        sort: 'published_desc', // berita terbaru duluan
+      }
+    });
+
+    console.log(response.data); // tampilkan hasil di terminal
+
+    if (response.data.error) {
+      throw new Error(response.data.error.message);
+    }
+
+    const berita = response.data.data;
+
+    res.render('berita', {
+      judul: 'Berita Terkini',
+      nama: 'Frans Surya Pati Harau',
+      berita
+    });
+  } catch (error) {
+    console.error('❌ Gagal mengambil berita:', error.message);
+    res.render('berita', {
+      judul: 'Berita Terkini',
+      nama: 'Frans Surya Pati Harau',
+      error: 'Gagal memuat berita. Silakan coba lagi nanti.'
+    });
+  }
+});
+
+
 // Wildcard umum untuk semua halaman lain
 app.get(/.*/, (req, res) => {
     res.render('404', {
@@ -91,6 +127,6 @@ app.get(/.*/, (req, res) => {
 })
 
 
-app.listen(4000, () => {
-  console.log('Server berjalan pada port 4000.')
+app.listen(port, () => {
+  console.log('Server berjalan pada port '+ port)
 })

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+{{>head}}
+<body>
+  {{>header}}
+
+  <main class="content fade-in">
+    <section class="card berita-card">
+      <h1 class="title">{{judul}}</h1>
+
+      {{#if error}}
+        <p class="error">{{error}}</p>
+      {{else}}
+        {{#each berita}}
+          <div class="berita-item">
+            {{#if image}}
+              <img src="{{image}}" alt="Gambar Berita" class="berita-img">
+            {{/if}}
+            <h2 class="berita-judul">{{title}}</h2>
+            <p class="berita-info">
+              <strong>{{source}}</strong> | {{published_at}}
+            </p>
+            <p class="berita-deskripsi">{{description}}</p>
+            <a href="{{url}}" target="_blank" class="berita-link">Baca Selengkapnya</a>
+          </div>
+        {{/each}}
+      {{/if}}
+    </section>
+  </main>
+
+  {{>footer}}
+</body>
+</html>
